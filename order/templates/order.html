@@ -64,7 +64,7 @@
                 </div>
                 <!--------tips---------------->
                 <div class="tips">
-                    <p><span class="fl">商品金额：</span><span class="fr">￥{{ totalPrice }}</span></p>
+                    <p><span class="fl">商品金额：</span><span class="fr" id="totalPriceId">￥{{ totalPrice }}</span></p>
                     <p><span class="fl">优惠金额：</span><span class="fr">￥0.00</span></p>
                     <p><span class="fl">运费：</span><span class="fr">免运费</span></p>
                 </div>
@@ -95,9 +95,9 @@
                                 })
             })
             //拼接请求参数
-            var params = 'address=1&payway='+$('.way .on').attr('name')+'&cartitems='+JSON.stringify(cartitems)
+            var params = 'address={{ address.id }}&payway='+$('.way .on').attr('name')+'&cartitems='+JSON.stringify(cartitems)+'&totalPriceId='+$('#totalPriceId').html();
             //拼接请求地址
-            var url = '/order/toorder/?'+params
+            var url = '/order/topay/?'+params
 
             $(this).attr('href',url)
         })
